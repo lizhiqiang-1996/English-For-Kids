@@ -4,19 +4,19 @@ const BOOK_ORDER = ['grade1a', 'grade1b', 'grade2a', 'grade2b']
 const BOOK_META = {
   grade1a: {
     title: 'English for KIDS Grade 1A',
-    cover: '/img/book-grade1a.jpg'
+    cover: 'https://cdn.jsdelivr.net/gh/lizhiqiang-1996/English-For-Kids@main/img/book-grade1a.jpg'
   },
   grade1b: {
     title: 'English for KIDS Grade 1B',
-    cover: '/img/book-grade1b.png'
+    cover: 'https://cdn.jsdelivr.net/gh/lizhiqiang-1996/English-For-Kids@main/img/book-grade1b.png'
   },
   grade2a: {
     title: 'English for KIDS Grade 2A',
-    cover: '/img/book-grade2a.png'
+    cover: 'https://cdn.jsdelivr.net/gh/lizhiqiang-1996/English-For-Kids@main/img/book-grade2a.png'
   },
   grade2b: {
     title: 'English for KIDS Grade 2B',
-    cover: '/img/book-grade2b.png'
+    cover: 'https://cdn.jsdelivr.net/gh/lizhiqiang-1996/English-For-Kids@main/img/book-grade2b.png'
   }
 }
 
