@@ -1,0 +1,29 @@
+page {
+  background: linear-gradient(180deg, #f7f9fc 0%, #eef4f8 100%);
+  color: #0f172a;
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 30rpx;
+  line-height: 1.6;
+}
+
+view,
+text,
+image {
+  box-sizing: border-box;
+}
+
+image {
+  display: block;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  line-height: inherit;
+}
+
+button::after {
+  border: none;
+}

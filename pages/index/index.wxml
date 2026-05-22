@@ -1,0 +1,38 @@
+<view class="page">
+  <view class="hero-card">
+    <view class="hero-badge">
+      <view class="hero-dot"></view>
+      <text>Legacy Entry</text>
+    </view>
+    <view class="hero-title">教材总览</view>
+    <view class="hero-desc">保留分享入口，整体切回更轻盈的 iOS 风格。</view>
+  </view>
+
+  <view class="book-section" wx:if="{{bookGroups.length > 0}}">
+    <view class="book-list">
+      <block wx:for="{{bookGroups}}" wx:key="bookKey" wx:for-item="book">
+        <view class="book-card" bindtap="onSelectBook" data-book-key="{{book.bookKey}}">
+          <image class="book-cover" src="{{book.cover}}" mode="aspectFill" />
+          <view class="book-card-overlay"></view>
+          <view class="book-card-content">
+            <view class="book-chip">{{book.unitCount}} Units</view>
+            <view class="book-name">{{book.title}}</view>
+            <view class="book-meta-row">
+              <view class="book-meta">{{book.totalCount}} 条音频</view>
+              <image class="book-card-arrow" src="/img/chevron-right-dark.svg" mode="aspectFit" />
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{bookGroups.length === 0 && !loading}}">
+    <image class="empty-icon" src="/img/audio-empty.svg" mode="aspectFit" />
+    <view class="empty-text">暂无教材音频</view>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+</view>

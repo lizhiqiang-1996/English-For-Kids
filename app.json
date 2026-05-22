@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/books/books",
+    "pages/player/player",
+    "pages/index/index",
+    "pages/book/book"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#F2F5FA",
+    "navigationBarBackgroundColor": "#F8FAFC",
+    "navigationBarTitleText": "English for KIDS",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#94A3B8",
+    "selectedColor": "#16A34A",
+    "backgroundColor": "#F8FAFC",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/books/books",
+        "text": "课本",
+        "iconPath": "img/menu-tab.png",
+        "selectedIconPath": "img/menu-tab-active.png"
+      },
+      {
+        "pagePath": "pages/player/player",
+        "text": "播放器",
+        "iconPath": "img/play-tab.png",
+        "selectedIconPath": "img/play-tab-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

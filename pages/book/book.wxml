@@ -1,0 +1,67 @@
+<view class="page">
+  <view class="book-header" wx:if="{{bookTitle}}">
+    <image class="book-cover" src="{{bookCover}}" mode="aspectFill" />
+    <view class="book-info">
+      <view class="book-badge">
+        <view class="book-dot"></view>
+        <text>Book Detail</text>
+      </view>
+      <view class="book-title">{{bookTitle}}</view>
+      <view class="book-desc">{{unitGroups.length}} 个 Unit · 轻量浅色风格</view>
+    </view>
+  </view>
+
+  <view class="unit-panel" wx:if="{{unitGroups.length > 0}}">
+    <block wx:for="{{unitGroups}}" wx:key="unitLabel" wx:for-item="group">
+      <view class="unit-row" bindtap="onToggleUnit" data-unit="{{group.unitLabel}}">
+        <view class="unit-left">
+          <image class="unit-icon" src="/img/book-outline-dark.svg" mode="aspectFit" />
+          <text class="unit-name">{{group.unitLabel}}</text>
+        </view>
+        <view class="unit-right">
+          <text class="unit-lessons">{{group.lessons.length}} 课次</text>
+          <image class="unit-arrow" src="{{group.open ? '/img/chevron-down-dark.svg' : '/img/chevron-right-dark.svg'}}" mode="aspectFit" />
+        </view>
+      </view>
+
+      <view class="lesson-panel" wx:if="{{group.open}}">
+        <block wx:for="{{group.lessons}}" wx:key="lesson" wx:for-item="lesson">
+          <view class="lesson-row" bindtap="onToggleLesson" data-unit="{{group.unitLabel}}" data-lesson="{{lesson.lesson}}">
+            <view class="lesson-left">
+              <image class="lesson-icon" src="/img/layers-outline-dark.svg" mode="aspectFit" />
+              <text class="lesson-name">{{lesson.lesson}}</text>
+            </view>
+            <view class="lesson-right">
+              <text class="lesson-count">{{lesson.items.length}} 条</text>
+              <image class="unit-arrow" src="{{lesson.open ? '/img/chevron-down-dark.svg' : '/img/chevron-right-dark.svg'}}" mode="aspectFit" />
+            </view>
+          </view>
+
+          <view class="audio-panel" wx:if="{{lesson.open}}">
+            <block wx:for="{{lesson.items}}" wx:key="id" wx:for-item="audio">
+              <view class="audio-row" bindtap="onAudioTap" data-id="{{audio.id}}">
+                <image class="audio-cover" src="{{audio.coverUrl}}" mode="aspectFill" />
+                <view class="audio-main">
+                  <view class="audio-title">{{audio.title}}</view>
+                  <view class="audio-subtitle">{{audio.unitLabel}} · {{audio.lesson}}</view>
+                </view>
+                <view class="audio-play-shell">
+                  <image class="audio-play" src="/img/play-dark.svg" mode="aspectFit" />
+                </view>
+              </view>
+            </block>
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
+
+  <view class="empty" wx:if="{{!loading && unitGroups.length === 0}}">
+    <image class="empty-icon" src="/img/audio-empty.svg" mode="aspectFit" />
+    <view class="empty-text">当前教材暂无音频</view>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+</view>

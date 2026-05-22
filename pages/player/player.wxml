@@ -1,0 +1,72 @@
+<view class="player-page">
+  <view class="player-page-info" wx:if="{{currentAudio}}">
+    <view class="player-page-badge">
+      <view class="player-page-dot"></view>
+      <text>Now Playing</text>
+    </view>
+    <view class="player-cover-shell">
+      <image class="player-page-cover" src="{{currentAudio.coverUrl}}" mode="aspectFill" />
+    </view>
+    <view class="player-page-content-row">
+      <view class="player-page-text">
+        <view class="player-page-book-row">
+          <view class="player-page-book">{{currentAudio.bookTitle || '当前课本'}}</view>
+          <view class="player-back-audio-btn" bindtap="onBackToCurrentAudioTap">返回音频</view>
+        </view>
+        <view class="player-page-meta">{{currentAudio.unit}} · {{currentAudio.lesson}}</view>
+        <view class="player-page-title">{{currentAudio.title}}</view>
+      </view>
+      <view class="player-favorite-btn {{isFavorited ? 'active' : ''}}" bindtap="onFavoriteTap">
+        <image class="player-favorite-icon" src="{{isFavorited ? '/img/heart-solid.svg' : '/img/heart-outline-dark.svg'}}" mode="aspectFit" />
+        <text class="player-favorite-text">{{isFavorited ? '已收藏' : '收藏'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="player-progress-card" wx:if="{{currentAudio}}">
+    <view class="player-section-head">
+      <view class="player-section-title">播放进度</view>
+    </view>
+    <view class="player-progress-bar" bindtouchstart="onProgressTouchStart" catchtouchmove="onProgressTouchMove" bindtouchend="onProgressTouchEnd">
+      <view class="player-progress-fill" style="width: {{progressPercent}}%"></view>
+      <view class="player-progress-thumb" style="left: {{progressPercent}}%" bindtouchstart="onProgressTouchStart" catchtouchmove="onProgressTouchMove" bindtouchend="onProgressTouchEnd"></view>
+    </view>
+    <view class="player-progress-time">
+      <text>{{displayCurrentTime}}</text>
+      <text>{{displayTotalDuration}}</text>
+    </view>
+  </view>
+
+  <view class="player-volume-card" wx:if="{{currentAudio}}">
+    <view class="player-section-head">
+      <view class="player-section-title">音量</view>
+      <view class="player-section-value">{{Math.round(volume * 100)}}%</view>
+    </view>
+    <view class="player-volume-row">
+      <image class="player-volume-icon" src="/img/sound-outline-dark.svg" mode="widthFix" />
+      <view class="player-volume-bar" bindtouchstart="onVolumeTouchStart" bindtouchmove="onVolumeTouchMove" bindtouchend="onVolumeTouchEnd">
+        <view class="player-volume-fill" style="width: {{volume * 100}}%"></view>
+        <view class="player-volume-thumb" style="left: {{volume * 100}}%"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="player-page-controls" wx:if="{{currentAudio}}">
+    <view class="player-control-btn" bindtap="onPreviousTap">
+      <image class="player-control-icon-img" src="/img/previous-dark.svg" mode="aspectFit" />
+    </view>
+    <view class="player-control-btn player-play-btn" bindtap="onPlayPauseTap">
+      <image class="player-play-icon-img" src="{{isPlaying ? '/img/pause-white.svg' : '/img/play-white.svg'}}" mode="aspectFit" />
+    </view>
+    <view class="player-control-btn" bindtap="onNextTap">
+      <image class="player-control-icon-img" src="/img/next-dark.svg" mode="aspectFit" />
+    </view>
+  </view>
+
+  <view class="player-empty" wx:if="{{!currentAudio}}">
+    <view class="player-empty-icon-shell">
+      <image class="player-empty-icon" src="/img/sound-outline-dark.svg" mode="aspectFit" />
+    </view>
+    <text>暂无播放内容</text>
+  </view>
+</view>
